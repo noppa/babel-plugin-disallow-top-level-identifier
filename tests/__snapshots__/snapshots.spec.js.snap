@@ -1,8 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should work with simple usage 1`] = `
-"const module = 'oo';
-const foo = 'f' + module;
+exports[`should be safe even if _ prefixed name also exists 1`] = `
+"let _module2 = 5;
+let _module = 6;"
+`;
 
-export { module, foo };"
+exports[`should not modify variables in deeper scopes 1`] = `
+"function bar(a) {
+  const module = 'foo';
+  return module + 'ooo';
+}
+
+const foobar = module => bar(module);"
+`;
+
+exports[`should work with a simple module 1`] = `
+"let _module = 'f';
+_module += 'oo';
+
+export { _module as module };"
+`;
+
+exports[`should work with object property shorthands 1`] = `
+"const _module = 'foo';
+const foo = { module: _module };"
+`;
+
+exports[`should work work with multiple variables 1`] = `
+"let _module = 5;
+const _exports = 6;
+const foobar = 8;"
 `;

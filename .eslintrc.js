@@ -4,7 +4,8 @@ module.exports = {
     'jest'
   ],
   env: {
-    browser: true,
+    browser: false,
+    node: true,
     commonjs: true,
     es6: true,
     'jest/globals': true

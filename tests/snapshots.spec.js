@@ -1,27 +1,53 @@
 const babel = require('babel-core');
-const fs = require('fs');
 const path = require('path');
-const {promisify} = require('util');
 
-/* globals __dirname */
-const testcasesDir = (...pathnames) => path.join(__dirname, 'testcases', ...pathnames);
-const readFile = promisify(fs.readFile);
-
-fs.readdirSync(testcasesDir())
-  .filter(_ => path.extname(_) === '.js')
-  .sort()
-  .map(_ => ({
-    filename: _,
-    testName: _.match(/[0-9]+_([a-zA-Z-]+)/)[1].replace(/-/g, ' ')
-  }))
-  .forEach(({filename, testName}) => {
-
-    it(`Should work with ${testName}`, async () => {
-      const file = await readFile(testcasesDir(filename), 'utf8');
-      const {code} = babel.transform(file);
-      
-      expect(code).toMatchSnapshot();
-    });
-
+const should = (/**@type {string}*/descr, /**@type {string}*/js) => it('should ' + descr, () => {
+  const {code} = babel.transform(js.trim(), {
+    babelrc: false,
+    extends: path.join(__dirname, '.babelrc')
   });
 
+  expect(code).toMatchSnapshot();
+});
+
+should('work with a simple module', `
+
+let module = 'f';
+module += 'oo'
+
+export { module }
+
+`);
+
+should('work with object property shorthands', `
+
+const module = 'foo';
+const foo = { module };
+
+`);
+
+should('not modify variables in deeper scopes', `
+
+function bar(a) {
+  const module = 'foo';
+  return module + 'ooo';
+}
+
+const foobar = module => bar(module)
+
+`);
+
+should('work work with multiple variables', `
+
+let module = 5;
+const exports = 6;
+const foobar = 8;
+
+`);
+
+should('be safe even if _ prefixed name also exists', `
+
+let module = 5;
+let _module = 6;
+
+`);

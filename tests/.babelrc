@@ -1,7 +1,7 @@
 {
   "plugins": [
     ["../index.js", {
-      "disallow": ["module"]
+      "disallow": ["module", "exports"]
     }]
   ]
 }
