@@ -6,12 +6,14 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "lint": "eslint index.js tests"
+    "lint": "eslint index.js tests",
+    "test": "jest --roots ./tests/"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "eslint": "^4.19.1",
+    "eslint-plugin-jest": "^21.15.1",
     "jest": "^22.4.4"
   }
 }

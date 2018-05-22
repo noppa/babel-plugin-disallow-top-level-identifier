@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should work with simple usage 1`] = `
+"const module = 'oo';
+const foo = 'f' + module;
+
+export { module, foo };"
+`;
