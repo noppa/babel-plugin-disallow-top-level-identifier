@@ -2,7 +2,7 @@
 A very simple Babel plugin to rename some problematic identifiers from the top level of a module.
 
 Example Babel config:
-```
+```JSON
 {
   "plugins": [
     ["disallow-identifier", {
@@ -13,7 +13,7 @@ Example Babel config:
 ```
 
 Input:
-```
+```JavaScript
 // Gets renamed because the variable is in the top level of the file
 let module = 'f';
 module += 'oo'
@@ -28,7 +28,7 @@ export { module }
 ```
 
 Output:
-```
+```JavaScript
 let _module = 'f';
 _module += 'oo';
 
