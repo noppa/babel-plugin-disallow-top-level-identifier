@@ -1,12 +1,15 @@
-// https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md#toc-rename-a-binding-and-its-references
-
-const blacklist = ['module'];
-
 module.exports = function() {
   return {
     visitor: {
-      Program: function(path) {
-        blacklist.forEach(reanameIfExists(path.scope));
+      Program: function(path, state) {
+        let words = state.opts && state.opts.words;
+        if (!Array.isArray(words)) {
+          const msg = 
+            'Expected option "words" to be a list of blacklisted words, but got ' + words;
+          throw new Error(msg);
+        }
+
+        words.forEach(reanameIfExists(path.scope));
       }
     }
   };

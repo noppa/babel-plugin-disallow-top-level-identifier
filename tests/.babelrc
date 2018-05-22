@@ -1,5 +1,7 @@
 {
   "plugins": [
-    "../index.js"
+    ["../index.js", {
+      "words": ["module"]
+    }]
   ]
 }
