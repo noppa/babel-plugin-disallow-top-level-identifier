@@ -1,15 +1,21 @@
 module.exports = function() {
+  let alreadyThrewOptionsError = false;
   return {
     visitor: {
       Program: function(path, state) {
-        let words = state.opts && state.opts.words;
-        if (!Array.isArray(words)) {
-          const msg = 
-            'Expected option "words" to be a list of blacklisted words, but got ' + words;
-          throw new Error(msg);
+        let blacklist = state.opts && state.opts.disallow;
+        if (!Array.isArray(blacklist)) {
+          if (!alreadyThrewOptionsError) {
+            const msg = 
+              'Expected option "disallow" to be a list of disallowed words, but got ' + blacklist;
+            alreadyThrewOptionsError = true;
+            throw new Error(msg);
+          } else {
+            return;
+          }
         }
 
-        words.forEach(reanameIfExists(path.scope));
+        blacklist.forEach(reanameIfExists(path.scope));
       }
     }
   };
