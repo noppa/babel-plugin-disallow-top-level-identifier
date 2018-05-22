@@ -51,3 +51,19 @@ let module = 5;
 let _module = 6;
 
 `);
+
+should('work with the example case in README', `
+
+// Gets renamed because the variable is in the top level of the file
+let module = 'f';
+module += 'oo'
+
+function bar() {
+  // Doesn't get renamed because the variable is in a function
+  const module = 'foo';
+  return module + 'ooo';
+}
+
+export { module }
+
+`);
