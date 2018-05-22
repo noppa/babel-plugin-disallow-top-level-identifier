@@ -5,6 +5,9 @@
   "author": "noppa",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "lint": "eslint index.js tests"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",

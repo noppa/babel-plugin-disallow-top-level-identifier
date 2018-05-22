@@ -1,2 +1,7 @@
-import dep from './dep'
-const foo = 5
+
+const module = 5;
+const foo = {
+  module
+};
+
+export default foo;
