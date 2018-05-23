@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-disallow-identifier",
+  "name": "babel-plugin-disallow-top-level-identifier",
   "version": "1.0.0",
   "main": "index.js",
   "author": "noppa",
