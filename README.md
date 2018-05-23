@@ -29,6 +29,7 @@ export { module }
 
 Output:
 ```JavaScript
+// Gets renamed because the variable is in the top level of the file
 let _module = 'f';
 _module += 'oo';
 
