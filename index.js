@@ -3,11 +3,11 @@ module.exports = function() {
   return {
     visitor: {
       Program: function(path, state) {
-        let blacklist = state.opts && state.opts.disallow;
-        if (!Array.isArray(blacklist)) {
+        let disllow = state.opts && state.opts.disallow;
+        if (!Array.isArray(disllow)) {
           if (!alreadyThrewOptionsError) {
             const msg = 
-              'Expected option "disallow" to be a list of disallowed words, but got ' + blacklist;
+              'Expected option "disallow" to be a list of disallowed words, but got ' + disllow;
             alreadyThrewOptionsError = true;
             throw new Error(msg);
           } else {
@@ -15,15 +15,15 @@ module.exports = function() {
           }
         }
 
-        blacklist.forEach(reanameIfExists(path.scope));
+        disllow.forEach(renameIfExists(path.scope));
       }
     }
   };
 };
 
-const reanameIfExists = scope => blacklistedWord => {
-  if (scope.hasOwnBinding(blacklistedWord)) {
-    const newId = scope.generateUidIdentifier(blacklistedWord);
-    scope.rename(blacklistedWord, newId.name);
+const renameIfExists = scope => disallowedWord => {
+  if (scope.hasOwnBinding(disallowedWord)) {
+    const newId = scope.generateUidIdentifier(disallowedWord);
+    scope.rename(disallowedWord, newId.name);
   }
 };
