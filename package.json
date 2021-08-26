@@ -10,11 +10,11 @@
     "test": "jest --roots ./tests/"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "eslint": "^4.19.1",
-    "eslint-plugin-jest": "^21.15.1",
-    "jest": "^22.4.4"
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "jest": "^27.0.6"
   },
   "repository": {
     "type": "git",

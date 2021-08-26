@@ -17,13 +17,14 @@ const foobar = module => bar(module);"
 exports[`should work with a simple module 1`] = `
 "let _module = 'f';
 _module += 'oo';
-
 export { _module as module };"
 `;
 
 exports[`should work with object property shorthands 1`] = `
 "const _module = 'foo';
-const foo = { module: _module };"
+const foo = {
+  module: _module
+};"
 `;
 
 exports[`should work with the example case in README 1`] = `

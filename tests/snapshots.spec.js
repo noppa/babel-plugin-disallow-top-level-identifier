@@ -1,4 +1,4 @@
-const babel = require('babel-core');
+const babel = require('@babel/core');
 const path = require('path');
 
 const should = (/**@type {string}*/descr, /**@type {string}*/js) => it('should ' + descr, () => {
