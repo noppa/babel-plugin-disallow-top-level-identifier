@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/noppa/babel-plugin-disallow-top-level-identifier/issues"
-  }
+  },
+	"files": [
+		"index.js"
+	]
 }
