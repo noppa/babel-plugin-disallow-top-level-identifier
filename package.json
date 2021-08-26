@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-disallow-top-level-identifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "author": "noppa",
   "license": "MIT",
@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/noppa/babel-plugin-disallow-top-level-identifier/issues"
   },
-	"files": [
-		"index.js"
-	]
+  "files": [
+    "index.js"
+  ]
 }
